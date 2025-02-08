@@ -12,6 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 class CursoServiceTest {
@@ -40,5 +42,20 @@ class CursoServiceTest {
 
         assertNotNull(result);
         verify(cursoRepository, times(1)).save(any(Curso.class));
+    }
+
+    @Test
+    void testFindAll() {
+        Curso curso1 = new Curso();
+        Curso curso2 = new Curso();
+        List<Curso> cursos = Arrays.asList(curso1, curso2);
+
+        when(cursoRepository.findAll()).thenReturn(cursos);
+
+        List<Curso> result = cursoService.findAll();
+
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        verify(cursoRepository, times(1)).findAll();
     }
 }
