@@ -5,6 +5,7 @@ import br.com.representacaoexternadedados.dto.CursoDTO;
 import br.com.representacaoexternadedados.dto.MatriculaDTO;
 import br.com.representacaoexternadedados.entity.Aluno;
 import br.com.representacaoexternadedados.entity.Curso;
+import br.com.representacaoexternadedados.entity.Matricula;
 import br.com.representacaoexternadedados.repository.AlunoRepository;
 import br.com.representacaoexternadedados.repository.MatriculaRepository;
 import org.junit.jupiter.api.Test;
@@ -46,5 +47,18 @@ class MatriculaServiceTest {
         });
 
         assert(exception.getStatus().equals(HttpStatus.NO_CONTENT));
+    }
+
+    @Test
+    void teste2() {
+        MatriculaDTO matriculaDTO = new MatriculaDTO(); // Suponha que tenha valores necessários
+        Matricula matricula = new Matricula(matriculaDTO);
+
+        when(matriculaRepository.save(any(Matricula.class))).thenReturn(matricula);
+
+        Matricula result = matriculaService.createMatricula(matriculaDTO);
+
+        assertNotNull(result);
+        verify(matriculaRepository, times(1)).save(any(Matricula.class));
     }
 }
