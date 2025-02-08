@@ -44,5 +44,22 @@ class MatriculaServiceTest {
         assertEquals(matriculaDTO.getNota(), result.getNota());
         verify(matriculaRepository, times(1)).save(matricula);
     }
+
+    @Test
+    void testUpdateNota2() {
+        Long id = 1L;
+        MatriculaDTO matriculaDTO = new MatriculaDTO(); // Defina os valores necessários
+        matriculaDTO.setNota(9.5F);
+        Matricula matricula = new Matricula();
+
+        when(matriculaRepository.findById(id)).thenReturn(Optional.of(matricula));
+        when(matriculaRepository.save(any(Matricula.class))).thenReturn(matricula);
+
+        Matricula result = matriculaService.updateNota(id, matriculaDTO);
+
+        assertNotNull(result);
+        assertEquals(matriculaDTO.getNota(), result.getNota());
+        verify(matriculaRepository, times(1)).save(matricula);
+    }
 }
 
