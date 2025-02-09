@@ -47,4 +47,20 @@ public class Aluno {
     public Curso getCurso() {
         return curso;
     }
+
+    public void setRa(Long ra) {
+        this.ra = ra;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setPeriodo(int periodo) {
+        this.periodo = periodo;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
 }

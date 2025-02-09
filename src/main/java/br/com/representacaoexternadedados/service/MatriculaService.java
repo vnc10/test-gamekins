@@ -25,15 +25,11 @@ public class MatriculaService {
 
     MatriculaRepository matriculaRepository;
 
-    DisciplinaRepository disciplinaRepository;
-
-    CursoRepository cursoRepository;
-
     public MatriculaService(MatriculaRepository matriculaRepository) {
         this.matriculaRepository = matriculaRepository;
     }
 
-    private Matricula getMatricula(Long id) {
+    public Matricula getMatricula(Long id) {
         Optional<Matricula> matricula = matriculaRepository.findById(id);
 
         if(matricula.isPresent()){

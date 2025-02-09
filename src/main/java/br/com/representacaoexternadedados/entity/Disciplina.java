@@ -50,4 +50,20 @@ public class Disciplina {
     public Curso getCurso() {
         return curso;
     }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
 }

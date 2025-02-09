@@ -33,4 +33,12 @@ public class Curso implements Serializable {
     public String getNome() {
         return nome;
     }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }
