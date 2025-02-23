@@ -41,7 +41,6 @@ public class MatriculaService {
     private List<Matricula> getMatriculaAno(int ano) {
         List<Matricula> matricula = matriculaRepository.findByAno(ano);
         return matricula;
-        //throw new ResponseStatusException(HttpStatus.NO_CONTENT);
     }
 
     public Matricula createMatricula(MatriculaDTO matriculaDTO) {
