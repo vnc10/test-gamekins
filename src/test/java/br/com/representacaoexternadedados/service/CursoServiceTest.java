@@ -41,4 +41,17 @@ class CursoServiceTest {
         assertNotNull(result);
         verify(cursoRepository, times(1)).save(any(Curso.class));
     }
+
+    @Test
+    void testCreateCursoNew() {
+        CursoDTO cursoDTO = new CursoDTO("curso novo");
+        Curso curso = new Curso(cursoDTO);
+
+        when(cursoRepository.save(any(Curso.class))).thenReturn(curso);
+
+        Curso result = cursoService.createCurso(cursoDTO);
+
+        assertNotNull(result);
+        verify(cursoRepository, times(1)).save(any(Curso.class));
+    }
 }
