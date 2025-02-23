@@ -3,6 +3,7 @@ package br.com.representacaoexternadedados.entity;
 import br.com.representacaoexternadedados.dto.DisciplinaDTO;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "disciplina")
@@ -65,5 +66,18 @@ public class Disciplina {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Disciplina that = (Disciplina) o;
+        return Objects.equals(nome, that.nome) && Objects.equals(codigo, that.codigo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, codigo);
     }
 }
