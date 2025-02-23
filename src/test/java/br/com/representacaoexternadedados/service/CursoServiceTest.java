@@ -31,7 +31,20 @@ class CursoServiceTest {
 
     @Test
     void testCreateCurso() {
-        CursoDTO cursoDTO = new CursoDTO("teste"); // Suponha que tenha valores necessários
+        CursoDTO cursoDTO = new CursoDTO("teste");
+        Curso curso = new Curso(cursoDTO);
+
+        when(cursoRepository.save(any(Curso.class))).thenReturn(curso);
+
+        Curso result = cursoService.createCurso(cursoDTO);
+
+        assertNotNull(result);
+        verify(cursoRepository, times(1)).save(any(Curso.class));
+    }
+
+    @Test
+    void testCreateCurso2() {
+        CursoDTO cursoDTO = new CursoDTO("asdasdasads");
         Curso curso = new Curso(cursoDTO);
 
         when(cursoRepository.save(any(Curso.class))).thenReturn(curso);
