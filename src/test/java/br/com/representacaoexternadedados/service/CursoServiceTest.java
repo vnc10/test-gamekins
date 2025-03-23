@@ -6,12 +6,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import br.com.representacaoexternadedados.dto.CursoDTO;
 import br.com.representacaoexternadedados.entity.Curso;
 import br.com.representacaoexternadedados.repository.CursoRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 class CursoServiceTest {
@@ -53,6 +56,29 @@ class CursoServiceTest {
 
         assertNotNull(result);
         verify(cursoRepository, times(1)).save(any(Curso.class));
+    }
+
+
+    @Test
+    void shouldReturnAllCursos() {
+        Curso curso1 = new Curso();
+        curso1.setNome("Engenharia de Software");
+
+        Curso curso2 = new Curso();
+        curso2.setNome("Ciência da Computação");
+
+        List<Curso> cursosMock = Arrays.asList(curso1, curso2);
+
+        when(cursoRepository.findAll()).thenReturn(cursosMock);
+
+        List<Curso> resultado = cursoService.findAll();
+
+        Assertions.assertNotNull(resultado);
+        Assertions.assertEquals(2, resultado.size());
+        Assertions.assertEquals("Engenharia de Software", resultado.get(0).getNome());
+        Assertions.assertEquals("Ciência da Computação", resultado.get(1).getNome());
+
+        verify(cursoRepository, times(1)).findAll();
     }
 
 }
