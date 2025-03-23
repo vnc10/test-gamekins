@@ -42,4 +42,17 @@ class CursoServiceTest {
         verify(cursoRepository, times(1)).save(any(Curso.class));
     }
 
+    @Test
+    void testCreateCursoWithNewParameters() {
+        CursoDTO cursoDTO = new CursoDTO("BCC");
+        Curso curso = new Curso(cursoDTO);
+
+        when(cursoRepository.save(any(Curso.class))).thenReturn(curso);
+
+        Curso result = cursoService.createCurso(cursoDTO);
+
+        assertNotNull(result);
+        verify(cursoRepository, times(1)).save(any(Curso.class));
+    }
+
 }
