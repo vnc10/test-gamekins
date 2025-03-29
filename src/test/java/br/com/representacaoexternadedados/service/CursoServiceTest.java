@@ -9,6 +9,8 @@ import br.com.representacaoexternadedados.repository.CursoRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -32,9 +34,10 @@ class CursoServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
-    void testCreateCurso() {
-        CursoDTO cursoDTO = new CursoDTO("alooo");
+    @ParameterizedTest
+    @ValueSource(strings = {"Teste", "BCC"})
+    void testCreateCurso(String input) {
+        CursoDTO cursoDTO = new CursoDTO(input);
         Curso curso = new Curso(cursoDTO);
 
         when(cursoRepository.save(any(Curso.class))).thenReturn(curso);
