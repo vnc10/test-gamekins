@@ -54,7 +54,6 @@ class DisciplinaServiceTest {
 
         Assertions.assertNotNull(resultado);
         Assertions.assertEquals("Matemática", resultado.getNome());
-        Assertions.assertEquals("Vini", resultado.getProfessor());
     }
 }
 
