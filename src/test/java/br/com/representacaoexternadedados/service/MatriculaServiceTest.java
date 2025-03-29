@@ -5,6 +5,8 @@ import br.com.representacaoexternadedados.repository.MatriculaRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -23,9 +25,9 @@ class MatriculaServiceTest {
     @InjectMocks
     private MatriculaService matriculaService;
 
-    @Test
-    void shouldThrowExceptionWhenMatriculaNotFound() {
-        Long matriculaId = 2L;
+    @ParameterizedTest
+    @ValueSource(longs = {1L, 2L, 3L})
+    void shouldThrowExceptionWhenMatriculaNotFound(Long matriculaId) {
 
         when(matriculaRepository.findById(matriculaId)).thenReturn(Optional.empty());
 
