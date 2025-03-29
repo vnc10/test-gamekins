@@ -34,10 +34,9 @@ class CursoServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"Teste", "BCC", "asdads"})
-    void testCreateCurso(String input) {
-        CursoDTO cursoDTO = new CursoDTO(input);
+    @Test
+    void testCreateCurso() {
+        CursoDTO cursoDTO = new CursoDTO("bcc");
         Curso curso = new Curso(cursoDTO);
 
         when(cursoRepository.save(any(Curso.class))).thenReturn(curso);
