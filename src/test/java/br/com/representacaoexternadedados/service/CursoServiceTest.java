@@ -34,7 +34,7 @@ class CursoServiceTest {
 
     @Test
     void testCreateCurso() {
-        CursoDTO cursoDTO = new CursoDTO("teste");
+        CursoDTO cursoDTO = new CursoDTO("alooo");
         Curso curso = new Curso(cursoDTO);
 
         when(cursoRepository.save(any(Curso.class))).thenReturn(curso);
