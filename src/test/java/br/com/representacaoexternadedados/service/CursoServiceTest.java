@@ -35,7 +35,7 @@ class CursoServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Teste", "BCC"})
+    @ValueSource(strings = {"Teste", "BCC", "asdads"})
     void testCreateCurso(String input) {
         CursoDTO cursoDTO = new CursoDTO(input);
         Curso curso = new Curso(cursoDTO);
