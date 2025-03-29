@@ -25,7 +25,7 @@ class MatriculaServiceTest {
 
     @Test
     void shouldThrowExceptionWhenMatriculaNotFound() {
-        Long matriculaId = 1L;
+        Long matriculaId = 2L;
 
         when(matriculaRepository.findById(matriculaId)).thenReturn(Optional.empty());
 
