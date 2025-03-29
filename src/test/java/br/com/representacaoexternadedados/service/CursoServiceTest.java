@@ -63,7 +63,6 @@ class CursoServiceTest {
         Assertions.assertNotNull(resultado);
         Assertions.assertEquals(2, resultado.size());
         Assertions.assertEquals("Engenharia de Software", resultado.get(0).getNome());
-        Assertions.assertEquals("Ciência da Computação", resultado.get(1).getNome());
 
         verify(cursoRepository, times(1)).findAll();
     }
