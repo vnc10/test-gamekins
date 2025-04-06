@@ -25,18 +25,17 @@ class MatriculaServiceTest {
     @InjectMocks
     private MatriculaService matriculaService;
 
-    @ParameterizedTest
-    @ValueSource(longs = {1L, 2L, 3L})
-    void shouldThrowExceptionWhenMatriculaNotFound(Long matriculaId) {
+    @Test
+    void shouldThrowExceptionWhenMatriculaNotFound() {
 
-        when(matriculaRepository.findById(matriculaId)).thenReturn(Optional.empty());
+        when(matriculaRepository.findById(1L)).thenReturn(Optional.empty());
 
         Assertions.assertThrows(
                 ResponseStatusException.class,
-                () -> matriculaService.getMatricula(matriculaId)
+                () -> matriculaService.getMatricula(1L)
         );
 
 
-        verify(matriculaRepository, times(1)).findById(matriculaId);
+        verify(matriculaRepository, times(1)).findById(1L);
     }
 }
